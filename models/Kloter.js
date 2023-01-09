@@ -3,6 +3,9 @@ module.exports = (sequelize, DataTypes) => {
     const Kloter =  sequelize.define( "Kloter", {
         id_kloter : {
             type : DataTypes.INTEGER,
+            primaryKey : true,
+            autoIncrement : true,
+            allowNull:false
           },
           ruangan : {
             type : DataTypes.INTEGER,

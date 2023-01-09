@@ -16,15 +16,26 @@ module.exports = async(req, res) => {
         });
     }
 
+    const ruangan = req.body.ruangan;
+    const cekRuangan = await Kloter.findOne({
+        where : {ruangan}
+    })
+
+    if(cekRuangan){
+        return res.status(400).json({
+            msg : 'Ruangan sudah digunakan'
+        })
+    }
+    
     const newData = {
         ruangan : req.body.ruangan,
         waktu : req.body.waktu
     }
 
-    const updateData = await Kloter.create(newData);
+    const createData = await Kloter.create(newData);
 
     return res.status(200).json({
         msg : 'Sukses update data',
-        data : updateData
+        data : createData
     });
 }

@@ -6,7 +6,7 @@ const logger = require('morgan');
 const cors = require('cors');
 
 // const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const siswaRouter = require('./routes/siswa');
 const authRouter  = require('./routes/auth');
 const profilRouter= require('./routes/profil');
 const kloterRouter= require('./routes/kloter');
@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('', authRouter);
-app.use('/users', usersRouter);
+app.use('/siswa', siswaRouter);
 app.use('/profile', profilRouter);
 app.use('/kloter', kloterRouter);
 
