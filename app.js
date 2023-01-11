@@ -11,6 +11,7 @@ const authRouter  = require('./routes/auth');
 const profilRouter= require('./routes/profil');
 const kloterRouter= require('./routes/kloter');
 const kartuRouter = require('./routes/kartu_ujian');
+const pengumumanRouter = require('./routes/pengumuman');
 
 const app = express();
 
@@ -26,5 +27,6 @@ app.use('/user', siswaRouter);
 app.use('/peserta', profilRouter);
 app.use('/kloter', kloterRouter);
 app.use('/kartu', kartuRouter);
+app.use('/pengumuman', pengumumanRouter);
 
 module.exports = app;

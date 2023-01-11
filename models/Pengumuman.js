@@ -1,7 +1,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     const Pengumuman =  sequelize.define( "Pengumuman", {
-        id_peserta : {
+        id_ujian : {
             type : DataTypes.INTEGER,
           },
           nilai : {
