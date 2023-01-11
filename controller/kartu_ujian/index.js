@@ -1,3 +1,4 @@
 const createKartu = require('./create');
+const updateKartu = require('./update');
 
-module.exports = {createKartu};
+module.exports = {createKartu, updateKartu};

@@ -17,8 +17,18 @@ module.exports = async(req, res) => {
         });
     }
 
+    const id_peserta = req.body.id_peserta;
+    const cekPeserta = await Kartu.findOne({
+        where : {id_peserta : id_peserta}
+    });
+    if(cekPeserta){
+        return res.status(400).json({
+            msg : 'Data peserta sudah digunakan'
+        });
+    }
+
     const createData = await Kartu.create({
-        id_peserta : req.body.id_peserta,
+        id_peserta : id_peserta,
         id_kloter : req.body.id_kloter
     })
 
