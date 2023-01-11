@@ -5,5 +5,6 @@ const kartuController = require('../controller/kartu_ujian');
 router.post('/', kartuController.createKartu);
 router.put('/:id', kartuController.updateKartu);
 router.get('/', kartuController.allData);
+router.get('/:id', kartuController.dataId);
 
 module.exports = router;
