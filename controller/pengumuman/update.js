@@ -28,9 +28,9 @@ module.exports = async(req, res) => {
     const id_ujian = req.body.id_ujian;
     if(id_ujian){
         const cekIdUjian = await Pengumuman.findOne({
-            where : {id_ujian : id_ujian}
+            where : { id_ujian}
         });
-        if(cekIdUjian && id_ujian !== cekId.id_ujian){
+        if(cekIdUjian && id_ujian !== data.id_ujian){
             return res.status(400).json({
                 msg : 'Data peserta sudah ada'
             });
@@ -38,7 +38,6 @@ module.exports = async(req, res) => {
     }
 
     const newData = {
-        id_ujian : id_ujian,
         nilai : req.body.nilai,
         rangking : req.body.nilai
     }

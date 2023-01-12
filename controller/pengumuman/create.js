@@ -30,7 +30,7 @@ module.exports = async(req, res) => {
     const newData = {
         id_ujian : id_ujian,
         nilai : req.body.nilai,
-        rangking : req.body.nilai
+        rangking : req.body.rangking
     }
 
     const createData = await Pengumuman.create(newData);

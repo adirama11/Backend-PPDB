@@ -29,7 +29,7 @@ module.exports = async(req, res) => {
     const id_peserta = req.body.id_peserta;
     if(id_peserta){
         const cekPeserta = await Kartu.findOne({
-            where : {id_peserta : id_peserta}
+            where : {id_peserta}
         });
         if(cekPeserta && id_peserta !== data.id_peserta){
             return res.status(400).json({
