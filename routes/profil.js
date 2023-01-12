@@ -6,5 +6,5 @@ router.post('/', profilController.createProfil);
 router.get('/', profilController.allData);
 router.get('/:id', profilController.dataId);
 router.put('/:id', profilController.updateData);
-
+router.delete('/:id', profilController.delData);
 module.exports = router;
