@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2023 at 09:31 PM
+-- Generation Time: Jan 12, 2023 at 09:55 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -56,6 +56,14 @@ CREATE TABLE `tb_kartu_ujian` (
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_kartu_ujian`
+--
+
+INSERT INTO `tb_kartu_ujian` (`id_ujian`, `id_peserta`, `id_kloter`, `updatedAt`, `createdAt`) VALUES
+(1, 1, 1, '2023-01-12 13:27:14', '2023-01-12 13:27:14'),
+(4, 5, 2, '2023-01-12 15:46:21', '2023-01-12 15:46:21');
+
 -- --------------------------------------------------------
 
 --
@@ -70,6 +78,16 @@ CREATE TABLE `tb_kloter` (
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_kloter`
+--
+
+INSERT INTO `tb_kloter` (`id_kloter`, `ruangan`, `waktu`, `updatedAt`, `createdAt`) VALUES
+(1, 'A01', 'Senin, 17 Februari 2023', '2023-01-12 13:20:05', '2023-01-12 13:20:05'),
+(2, 'A02', 'Senin, 17 Februari 2023', '2023-01-12 13:20:14', '2023-01-12 13:20:14'),
+(3, 'A03', 'Senin, 17 Februari 2023', '2023-01-12 13:20:21', '2023-01-12 13:20:21'),
+(4, 'A03', 'Selasa, 18 Februari 2023', '2023-01-12 13:24:13', '2023-01-12 13:24:13');
+
 -- --------------------------------------------------------
 
 --
@@ -77,12 +95,20 @@ CREATE TABLE `tb_kloter` (
 --
 
 CREATE TABLE `tb_pengumuman` (
+  `id_pengumuman` int(11) NOT NULL,
   `id_ujian` int(11) DEFAULT NULL,
   `nilai` int(11) DEFAULT NULL,
   `rangking` int(11) DEFAULT NULL,
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_pengumuman`
+--
+
+INSERT INTO `tb_pengumuman` (`id_pengumuman`, `id_ujian`, `nilai`, `rangking`, `updatedAt`, `createdAt`) VALUES
+(7, 1, 80, 2, '2023-01-12 15:56:20', '2023-01-12 15:56:20');
 
 -- --------------------------------------------------------
 
@@ -119,8 +145,7 @@ CREATE TABLE `tb_profil_peserta` (
 INSERT INTO `tb_profil_peserta` (`id_peserta`, `id_user`, `nama`, `nisn`, `ttl`, `agama`, `alamat`, `no_hp`, `ortu`, `sekolah_asal`, `pil_jurusan`, `skhu`, `kk`, `surat_kes`, `akte`, `raport`, `bukti_bayar`, `createdAt`, `updatedAt`) VALUES
 (1, 3, 'Jidane', 1234567, 'Sleman, 11 Mei 2000', 'Islam', 'Sleman', 8976568, '-', 'SMAN 1 Sleman', 'RPL', 'ok', 'ok', 'ok', 'ok', 'ok', 'ok', '2023-01-05 01:14:51', '2023-01-05 01:14:51'),
 (5, 5, 'astaga', 1234567, 'Sleman', 'z', 'z', 1, 'zd', 'c', 'd', 'd', 'r', 't', 'd', 'e', '6g', '2023-01-05 01:29:23', '2023-01-06 02:24:52'),
-(6, 3, 'Aji solehot', 123877, 'Sleman, 23 Februari 2001', 'islam', 'Sleman', 86257829, '-', 'SMP 1 Bantul', 'RPL', 'skhu.pdf', 'kk.pdf', 'surat.pdf', 'akte.pdf', 'raport.odf', 'bayar.pdf', '2023-01-05 08:52:34', '2023-01-05 09:24:18'),
-(7, 1, 'Jidanearj', 12345678, 'ii', 'dshj', 'dshjdfdd', 24, 'f', 'reg', 'r', 'ret', 'tdf', 'gh', 'fdcv', 'trd', 'dsg', '2023-01-06 02:26:33', '2023-01-06 02:26:57');
+(8, 3, 'Asolole', 2147483647, 'Sleman', 'Konghucu', 'Sleman', 982638722, 'Farida', 'Boyolali', 'Infor', 'a', 'a', 'a', 'a', 'a', 'a', '2023-01-12 15:36:48', '2023-01-12 15:36:48');
 
 -- --------------------------------------------------------
 
@@ -188,6 +213,7 @@ ALTER TABLE `tb_kloter`
 -- Indexes for table `tb_pengumuman`
 --
 ALTER TABLE `tb_pengumuman`
+  ADD PRIMARY KEY (`id_pengumuman`),
   ADD KEY `id_ujian` (`id_ujian`);
 
 --
@@ -212,19 +238,25 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_kartu_ujian`
 --
 ALTER TABLE `tb_kartu_ujian`
-  MODIFY `id_ujian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_kloter`
 --
 ALTER TABLE `tb_kloter`
-  MODIFY `id_kloter` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kloter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tb_pengumuman`
+--
+ALTER TABLE `tb_pengumuman`
+  MODIFY `id_pengumuman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_profil_peserta`
 --
 ALTER TABLE `tb_profil_peserta`
-  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
@@ -247,8 +279,6 @@ ALTER TABLE `tb_kartu_ujian`
 -- Constraints for table `tb_pengumuman`
 --
 ALTER TABLE `tb_pengumuman`
-  ADD CONSTRAINT `ID_PESERTA` FOREIGN KEY (`id_ujian`) REFERENCES `tb_profil_peserta` (`id_peserta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_pengumuman_ibfk_1` FOREIGN KEY (`id_ujian`) REFERENCES `tb_profil_peserta` (`id_peserta`),
   ADD CONSTRAINT `tb_pengumuman_ibfk_2` FOREIGN KEY (`id_ujian`) REFERENCES `tb_kartu_ujian` (`id_ujian`);
 
 --
